@@ -1,0 +1,217 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Health Info Services API",
+    "version": "1.0.0",
+    "title": "iOS Heart Rate Backend",
+    "contact": {
+      "email": "doantotnghiep.fit@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "localhost"
+    }
+  ],
+  "paths": {
+    "healthInfo/{id}": {
+      "get": {
+        "tags": [
+          "healthInfos"
+        ],
+        "summary": "Retrieve a single healthInfo by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "healthInfo ID stored in database",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/healthInfo"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "healthInfos"
+        ],
+        "summary": "Update healthInfo profile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "healthInfo ID stored in database",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/healthInfoRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/healthInfo"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "CPF already exists in database"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "healthInfos"
+        ],
+        "summary": "Delete healthInfo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "healthInfo ID stored in database",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No response"
+          }
+        }
+      }
+    },
+    "/healthInfos": {
+      "get": {
+        "tags": [
+          "healthInfos"
+        ],
+        "summary": "List all healthInfos",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/healthInfo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "healthInfos"
+        ],
+        "summary": "Create a new healthInfo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/healthInfoRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/healthInfo"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "CPF already exists in database"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "healthInfo": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/healthInfoRequest"
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "healthInfoRequest": {
+        "properties": {
+          "height": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "string"
+          },
+          "age": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "medic_his": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

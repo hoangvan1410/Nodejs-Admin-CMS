@@ -1,1 +1,1 @@
-module.exports = ({ UserRepository }) => id => UserRepository.get(id)
+module.exports = ({ HeartRateRepository }) => id => HeartRateRepository.getById(id)

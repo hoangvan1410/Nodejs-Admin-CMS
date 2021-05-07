@@ -1,15 +1,15 @@
 const { asFunction } = require('awilix')
 
-const inMemoryDB = container => {
-  const UserRepositoryInMemory = require('../repositories/UserRepositoryInMemory')
+// const inMemoryDB = container => {
+//   const HealthInfoRepositoryInMemory = require('../repositories/HeartRateRepositoryMongo')
 
-  container.register({
-    UserRepository: asFunction(UserRepositoryInMemory).singleton()
-  })
-}
+//   container.register({
+//     HealthInfoRepository: asFunction(HealthInfoRepositoryInMemory).singleton()
+//   })
+// }
 
 const mongoDB = container => {
-  const UserRepositoryMongo = require('../repositories/UserRepositoryMongo')
+  const HeartRateRepositoryMongo = require('../repositories/HeartRateRepositoryMongo')
 
   // Load Database and Schemas
   container.loadModules([
@@ -17,15 +17,16 @@ const mongoDB = container => {
   ])
 
   container.register({
-    UserRepository: asFunction(UserRepositoryMongo)
+    HeartRateRepository: asFunction(HeartRateRepositoryMongo)
   })
 }
 
 const resolveDB = container => {
-  if (process.env.NODE_ENV === 'test') process.env.DB_DRIVER = 'in-memory'
+  //if (process.env.NODE_ENV === 'test') process.env.DB_DRIVER = 'in-memory'
 
-  if (process.env.DB_DRIVER === 'in-memory') inMemoryDB(container)
-  else if (process.env.DB_DRIVER === 'mongo') mongoDB(container)
+  //if (process.env.DB_DRIVER === 'in-memory') inMemoryDB(container)
+  //else if (process.env.DB_DRIVER === 'mongo') 
+  mongoDB(container)
 }
 
 module.exports = resolveDB

@@ -1,5 +1,5 @@
-module.exports = ({ UserRepository, User }) =>
-  (name, cpf, birthdate, subscription, dependents) => {
-    const user = new User(null, name, cpf, birthdate, subscription, dependents)
-    return UserRepository.persist(user)
+module.exports = ({ HeartRateRepository, HeartRate }) =>
+  (user_id, heart_rate , create_date) => {
+    const heartRate = new HeartRate(null, user_id, heart_rate, create_date)
+    return HeartRateRepository.persist(heartRate)
   }

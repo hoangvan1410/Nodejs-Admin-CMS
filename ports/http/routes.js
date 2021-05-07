@@ -1,32 +1,28 @@
-module.exports = ({ UsersController }) => [
+module.exports = ({ HeartRatesController }) => [
   {
     method: 'GET',
-    path: '/users',
-    handler: UsersController.listUsers
+    path: '/heartRates/:id',
+    handler: HeartRatesController.findHeartRate
   },
   {
     method: 'POST',
-    path: '/users',
-    handler: UsersController.createUser
+    path: '/heartRates',
+    handler: HeartRatesController.createHeartRate
   },
   {
     method: 'GET',
-    path: '/users/:id',
-    handler: UsersController.findUser
+    path: '/heartRates/user=:user_id',
+    handler: HeartRatesController.findHeartRateByUserId
   },
   {
     method: 'DELETE',
-    path: '/users/:id',
-    handler: UsersController.deleteUser
+    path: '/heartRate/:id',
+    handler: HeartRatesController.deleteHeartRate
   },
   {
-    method: 'PATCH',
-    path: '/users/:id',
-    handler: UsersController.updateUser
-  },
-  {
-    method: 'PUT',
-    path: '/users/:id',
-    handler: UsersController.updateUser
+    method: 'DELETE',
+    path: '/heartRate/user=:user_id',
+    handler: HeartRatesController.deleteHeartRateByUserId
   }
+  
 ]

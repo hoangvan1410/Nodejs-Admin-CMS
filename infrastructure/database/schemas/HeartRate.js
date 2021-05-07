@@ -1,24 +1,17 @@
 const { RESOLVER } = require('awilix')
 const { Schema } = require('mongoose')
 
-const userSchema = new Schema({
-  name: String,
-  cpf: {
-    type: Number,
-    index: true,
-    unique: true
-  },
+const heartRateSchema = new Schema({
+  id_user: String,
+  heart_rate: Number,
+  state: String,
   birthdate: Date,
-  subscription: {
-    type: String,
-    enum: ['Basic', 'Standard', 'Premium']
-  },
-  dependents: Number
+  create_date: Date
 })
 
-const userModel = ({ database: mongoose }) => mongoose.model('User', userSchema)
-module.exports = userModel
+const heartRateModel = ({ database: mongoose }) => mongoose.model('HeartRate', heartRateSchema)
+module.exports = heartRateModel
 
-userModel[RESOLVER] = {
-  name: 'UserSchema'
+heartRateModel[RESOLVER] = {
+  name: 'HeartRateSchema'
 }
