@@ -2,7 +2,7 @@ const { RESOLVER } = require('awilix')
 const { Schema } = require('mongoose')
 
 const heartRateSchema = new Schema({
-  id_user: String,
+  user_id: String,
   heart_rate: Number,
   state: String,
   birthdate: Date,

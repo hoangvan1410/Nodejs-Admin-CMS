@@ -1,10 +1,9 @@
 module.exports = () => class {
-  constructor (id = null, name, cpf, birthdate, subscription, dependents) {
+  constructor (id = null, user_id, heart_rate, state, create_date) {
     this.id = id
-    this.name = name
-    this.cpf = cpf
-    this.birthdate = birthdate
-    this.subscription = subscription
-    this.dependents = dependents
+    this.user_id = user_id
+    this.heart_rate = heart_rate
+    this.state = state
+    this.create_date = create_date
   }
 }
