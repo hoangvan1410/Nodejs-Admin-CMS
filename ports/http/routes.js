@@ -1,6 +1,11 @@
 module.exports = ({ HeartRatesController }) => [
   {
     method: 'GET',
+    path: '/heartRates',
+    handler: HeartRatesController.listHeartRates
+  },
+  {
+    method: 'GET',
     path: '/heartRates/:id',
     handler: HeartRatesController.findHeartRate
   },

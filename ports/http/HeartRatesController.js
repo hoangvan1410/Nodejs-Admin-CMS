@@ -1,6 +1,6 @@
 const pick = require('lodash/fp/pick')
 
-const HealthInfosController = (container) => ({
+const HeartRatesController = (container) => ({
   listHeartRates: async (req, res) => {
     const { ListHeartRates } = container
 
@@ -52,4 +52,4 @@ const HealthInfosController = (container) => ({
 
 })
 
-module.exports = HealthInfosController
+module.exports = HeartRatesController

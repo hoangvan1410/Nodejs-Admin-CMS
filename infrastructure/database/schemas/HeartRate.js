@@ -5,7 +5,6 @@ const heartRateSchema = new Schema({
   user_id: String,
   heart_rate: Number,
   state: String,
-  birthdate: Date,
   create_date: Date
 })
 

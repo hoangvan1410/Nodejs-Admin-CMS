@@ -1,1 +1,1 @@
-module.exports = ({ UserRepository }) => id => UserRepository.remove(id)
+module.exports = ({ HeartRateRepository }) => id => HeartRateRepository.remove(id)

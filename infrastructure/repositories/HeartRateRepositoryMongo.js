@@ -43,7 +43,7 @@ module.exports = ({ HeartRate, HeartRateSchema }) => ({
     )
   },
 
-  getByUserId: async user_id => await find({user_id:user_id}),
+  getByUserId: async user_id => await HeartRateSchema.find({user_id:user_id}),
 
   remove: async (id) => {
     const mongooseHeartRate = await HeartRateSchema.findOneAndDelete({ _id: id })

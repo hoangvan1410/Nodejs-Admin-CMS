@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const database = () => {
   const { DB_HOST, DB_PORT, DB_DATABASE, DB_USER, DB_PASS } = process.env
-  const connectionString = `mongodb://${DB_HOST}:${DB_PORT}/${DB_DATABASE}`
+  const connectionString = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_DATABASE}?retryWrites=true&w=majority`
 
   mongoose.connect(connectionString, {
     useNewUrlParser: true,
