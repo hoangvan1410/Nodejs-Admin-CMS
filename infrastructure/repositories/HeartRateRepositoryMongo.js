@@ -6,11 +6,12 @@ module.exports = ({ HeartRate, HeartRateSchema }) => ({
   find: async () => await HeartRateSchema.find(),
 
   persist: async heartRate => {
-    const { user_id, heart_rate, state, create_date } = heartRate
+    let create_date = Date.now();
+    const { user_id, heart_rate, state } = heartRate
     const mongooseHeartRate = new HeartRateSchema({
-      user_id, 
-      heart_rate, 
-      state, 
+      user_id,
+      heart_rate,
+      state,
       create_date
     })
 
@@ -43,7 +44,7 @@ module.exports = ({ HeartRate, HeartRateSchema }) => ({
     )
   },
 
-  getByUserId: async user_id => await HeartRateSchema.find({user_id:user_id}),
+  getByUserId: async user_id => await HeartRateSchema.find({ user_id: user_id }),
 
   remove: async (id) => {
     const mongooseHeartRate = await HeartRateSchema.findOneAndDelete({ _id: id })
@@ -54,12 +55,15 @@ module.exports = ({ HeartRate, HeartRateSchema }) => ({
     return mongooseHeartRate
   },
 
-  removeByUserId: async (user_id) => {
+  removeByUserId: async user_id => {
     const mongooseHeartRate = await HeartRateSchema.deleteMany({ user_id: user_id })
     if (!mongooseHeartRate) {
       throw new NotFoundError('User not found')
     }
 
     return mongooseHeartRate
-  }
+  },
+
+  getByUserIdAndDate: async (user_id, from_date, to_date) => await HeartRateSchema.find({ user_id: user_id, create_date:{$gte:from_date,$lte:to_date}  }),
+
 })

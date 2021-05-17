@@ -10,6 +10,11 @@ module.exports = ({ HeartRatesController }) => [
     handler: HeartRatesController.findHeartRate
   },
   {
+    method: 'GET',
+    path: '/heartRates/user=:user_id/from=:from_date?to=:to_date',
+    handler: HeartRatesController.findHeartRateByUserIdAndDate
+  },
+  {
     method: 'POST',
     path: '/heartRates',
     handler: HeartRatesController.createHeartRate

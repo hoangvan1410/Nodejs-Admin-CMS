@@ -1,4 +1,5 @@
 const pick = require('lodash/fp/pick')
+const GetHeartRateByIdAndDate = require('../../application/GetHeartRateByIdAndDate')
 
 const HeartRatesController = (container) => ({
   listHeartRates: async (req, res) => {
@@ -10,7 +11,8 @@ const HeartRatesController = (container) => ({
 
   createHeartRate: async (req, res) => {
     const { CreateHeartRate } = container
-    const { user_id, heart_rate, state, create_date } = req.body
+    let create_date = Date.now();
+    const { user_id, heart_rate, state } = req.body
 
     const heartRate = await CreateHeartRate(
       user_id, 
@@ -48,8 +50,15 @@ const HeartRatesController = (container) => ({
 
     const heartRate = await DeleteHeartRateByUserId(req.params.user_id)
     return heartRate
-  }
+  },
 
+  findHeartRateByUserIdAndDate: async(req,res)=>{
+    const{GetHeartRateByIdAndDate}=container
+
+    const heartRate = await GetHeartRateByIdAndDate(req.params.user_id,req.params.from_date,req.params.to_date)
+    return heartRate
+  }
+  
 })
 
 module.exports = HeartRatesController
