@@ -19,8 +19,8 @@ module.exports = ({ routes, LoggerConfig }) => {
     root: path.join(__dirname, '../..'),
     redirect: true
   })
-  server.get('/docs/', (req, res) => { res.sendFile('docs/') })
-  server.get('/coverage/', (req, res) => { res.sendFile('coverage/') })
+  // server.get('/docs/', (req, res) => { res.sendFile('docs/') })
+  // server.get('/coverage/', (req, res) => { res.sendFile('coverage/') })
 
   return server
 }

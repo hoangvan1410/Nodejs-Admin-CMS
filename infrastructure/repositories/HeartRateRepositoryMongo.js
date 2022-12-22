@@ -1,3 +1,8 @@
+/* eslint-disable semi */
+/* eslint-disable comma-dangle */
+/* eslint-disable comma-spacing */
+/* eslint-disable prefer-const */
+/* eslint-disable camelcase */
 const { NotFoundError, AlreadyExistsError } = require('../webserver/errors')
 
 const MONGO_ALREADY_EXISTS = 11000
@@ -64,6 +69,7 @@ module.exports = ({ HeartRate, HeartRateSchema }) => ({
     return mongooseHeartRate
   },
 
-  getByUserIdAndDate: async (user_id, from_date, to_date) => await HeartRateSchema.find({ user_id: user_id, create_date:{$gte:from_date,$lte:to_date}  }),
+  // eslint-disable-next-line key-spacing, object-curly-spacing
+  getByUserIdAndDate: async (user_id, from_date, to_date) => await HeartRateSchema.find({ user_id: user_id, create_date:{$gte:from_date,$lte:to_date}}),
 
 })
