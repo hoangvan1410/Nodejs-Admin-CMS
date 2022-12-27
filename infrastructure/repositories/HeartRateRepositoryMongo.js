@@ -1,6 +1,5 @@
 /* eslint-disable semi */
 /* eslint-disable comma-dangle */
-/* eslint-disable comma-spacing */
 /* eslint-disable prefer-const */
 /* eslint-disable camelcase */
 const { NotFoundError, AlreadyExistsError } = require('../webserver/errors')
@@ -70,6 +69,6 @@ module.exports = ({ HeartRate, HeartRateSchema }) => ({
   },
 
   // eslint-disable-next-line key-spacing, object-curly-spacing
-  getByUserIdAndDate: async (user_id, from_date, to_date) => await HeartRateSchema.find({ user_id: user_id, create_date:{$gte:from_date,$lte:to_date}}),
+  getByUserIdAndDate: async (user_id, from_date, to_date) => await HeartRateSchema.find({ user_id: user_id, create_date: { $gte: from_date, $lte: to_date } }),
 
 })
