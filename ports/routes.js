@@ -6,8 +6,13 @@ module.exports = ({ HeartRatesController,UserController }) => [
   },
   {
     method: 'POST',
-    path: '/lohin',
+    path: '/register',
     handler: UserController.createUser
+  },
+  {
+    method: 'POST',
+    path: '/login',
+    handler: UserController.login
   }
 
 ]
