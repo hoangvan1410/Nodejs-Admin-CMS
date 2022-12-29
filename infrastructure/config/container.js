@@ -8,7 +8,7 @@ module.exports = () => {
   container.loadModules([
     'ports/**/*.js',
     'application/**/*.js',
-    'domain/**/*.js'
+    'domain/**/*.js',
   ])
 
   resolveDB(container)

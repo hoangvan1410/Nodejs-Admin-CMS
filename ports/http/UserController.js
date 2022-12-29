@@ -2,6 +2,7 @@
 /* eslint-disable semi */
 /* eslint-disable camelcase */
 /* eslint-disable prefer-const */
+const { verifyUser } = require('../middleware/verifyUser')
 const UsersController = (container) => ({
   createUser: async (req, res) => {
     const { CreateUser } = container

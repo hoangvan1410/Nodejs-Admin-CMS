@@ -1,8 +1,9 @@
+
 module.exports = ({ HeartRatesController,UserController }) => [
   {
     method: 'POST',
     path: '/heartRates',
-    handler: HeartRatesController.createHeartRate
+    handler: (HeartRatesController.createHeartRate)
   },
   {
     method: 'POST',
