@@ -1,4 +1,5 @@
-
+const verifyToken = require('./middleware/verifyToken')
+const fastify = require('fastify')
 module.exports = ({ HeartRatesController,UserController }) => [
   {
     method: 'POST',
